@@ -1,0 +1,10 @@
+<table>
+    <tr *ngFor="let row of matrix; let i = index">
+        <th *ngFor="let cell of row">
+            <div *ngIf="cell">
+                {{cell}}
+            </div>
+            <textarea *ngIf="!cell && i !== 0" rows="3" cols="3"></textarea>
+        </th>
+    </tr>
+</table>

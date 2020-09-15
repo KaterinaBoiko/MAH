@@ -1,0 +1,68 @@
+<h1>Method of analysis of hierarchies</h1>
+<mat-divider></mat-divider>
+<form [formGroup]="dataForm" (ngSubmit)="onSubmit()" *ngIf="showForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Set your target:</mat-label>
+    <input matInput type="text" formControlName="target">
+  </mat-form-field>
+  <div>
+    <div class="criterions">
+      <h2>Criterions:</h2>
+      <mat-form-field appearance="fill">
+        <mat-label>First criterion:</mat-label>
+        <input matInput type="text" formControlName="firstCriterion">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Second criterion:</mat-label>
+        <input matInput type="text" formControlName="secondCriterion">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Third criterion:</mat-label>
+        <input matInput type="text" formControlName="thirdCriterion">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fourth criterion:</mat-label>
+        <input matInput type="text" formControlName="fourthCriterion">
+      </mat-form-field>
+    </div>
+
+    <div class="alternatives">
+      <h2>Alternatives:</h2>
+      <mat-form-field appearance="fill">
+        <mat-label>First alternative:</mat-label>
+        <input matInput type="text" formControlName="firstAlternative">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Second alternative:</mat-label>
+        <input matInput type="text" formControlName="secondAlternative">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Third alternative:</mat-label>
+        <input matInput type="text" formControlName="thirdAlternative">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fourth alternative:</mat-label>
+        <input matInput type="text" formControlName="fourthAlternative">
+      </mat-form-field>
+    </div>
+  </div>
+  <button mat-raised-button type="submit" color="primary">Submit</button>
+</form>
+
+<div class="matrices" *ngIf="showMatrices">
+  <h2>Matrix of pairwise comparisons of the importance of criteria</h2>
+  <app-matrix [data]="criterions"></app-matrix>
+  <mat-divider></mat-divider>
+
+  <h2>Matrices of pairwise comparisons of alternatives for each of the criteria</h2>
+  <div *ngFor="let criterion of criterions">
+    <app-matrix [data]="alternatives" [criterion]="criterion"></app-matrix>
+    <mat-divider></mat-divider>
+  </div>
+</div>

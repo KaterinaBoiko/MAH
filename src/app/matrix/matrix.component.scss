@@ -1,0 +1,22 @@
+table {
+    margin: 0 auto;
+    width: 70%;
+
+    tr {
+        border-top: 1px solid gray ;
+    }
+
+    th {
+        width: 70px;
+        word-break: keep-all;
+    }
+}
+
+textarea {
+    width: 40px;
+    height: 40px;
+    resize: none;
+    font-size: 21px;
+    line-height: 40px;
+    text-align: center;
+}

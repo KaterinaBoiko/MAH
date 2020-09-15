@@ -1,0 +1,26 @@
+h1, h2 {
+    margin: 20px;
+}
+
+form {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+    &>div{
+        display: flex;
+        width: 80%;
+        justify-content: space-evenly;
+    }
+    
+    mat-form-field {
+        display: block;
+        width: 350px;
+    }
+}
+
+mat-divider {
+    margin: 30px 0;
+}
