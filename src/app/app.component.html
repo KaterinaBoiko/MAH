@@ -1,6 +1,6 @@
 <h1>Method of analysis of hierarchies</h1>
 <mat-divider></mat-divider>
-<form [formGroup]="dataForm" (ngSubmit)="onSubmit()" *ngIf="showForm">
+<form [formGroup]="dataForm" (ngSubmit)="onSubmitForm()" *ngIf="showForm">
   <mat-form-field appearance="fill">
     <mat-label>Set your target:</mat-label>
     <input matInput type="text" formControlName="target">
@@ -57,12 +57,24 @@
 
 <div class="matrices" *ngIf="showMatrices">
   <h2>Matrix of pairwise comparisons of the importance of criteria</h2>
-  <app-matrix [data]="criterions"></app-matrix>
+  <app-matrix [matrix]="matrices[0]" (priorityVector)="getFinalResults($event)"></app-matrix>
   <mat-divider></mat-divider>
 
   <h2>Matrices of pairwise comparisons of alternatives for each of the criteria</h2>
-  <div *ngFor="let criterion of criterions">
-    <app-matrix [data]="alternatives" [criterion]="criterion"></app-matrix>
+  <div *ngFor="let matrix of matrices | slice:1">
+    <app-matrix [matrix]="matrix" (priorityVector)="getFinalResults($event)"></app-matrix>
     <mat-divider></mat-divider>
   </div>
+
+  <button mat-raised-button color="primary" (click)="showResults()">Show results</button>
+</div>
+
+<div class="results" *ngIf="showResult">
+  <table>
+    <caption>Vector of global priorities:</caption>  
+    <tr *ngFor="let item of globalPriorities;">
+        <th>{{item.alternative}}</th>  
+        <td>{{item.priority}}</td>
+    </tr>
+</table>
 </div>

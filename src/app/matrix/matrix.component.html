@@ -1,10 +1,15 @@
 <table>
-    <tr *ngFor="let row of matrix; let i = index">
-        <th *ngFor="let cell of row">
-            <div *ngIf="cell">
+    <tr *ngFor="let row of displayedMatrix; let i = index;">
+        <th *ngFor="let cell of row; let j = index;" [class.criterion]="i == 0 && j === 0 && cell">
+            <div *ngIf="!isNumber(cell)">
                 {{cell}}
             </div>
-            <textarea *ngIf="!cell && i !== 0" rows="3" cols="3"></textarea>
+            <textarea *ngIf="isNumber(cell)" [ngModel]="displayedMatrix[i][j]" (change)="changeMatrix($event.target.value, i, j)" [disabled]="i === j"></textarea>
         </th>
     </tr>
 </table>
+<span class="title"><strong>Own matrix vector:</strong> {{matrix.ownVector}}</span>
+<span class="title"><strong>Priority vector:</strong> {{matrix.priorityVector}}</span>
+<span class="title"><strong>Vector Y:</strong> {{matrix.vectorY}}</span>
+<span class="title"><strong>Maximum eigenvalue of the matrix:</strong> {{matrix.maximumEigenvalue}}</span>
+<span class="title"><strong>Consistency index:</strong> {{matrix.consistencyIndex}}</span>

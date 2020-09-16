@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "mah"
+  "defaultProject": "mah",
+  "cli": {
+    "analytics": false
+  }
 }
